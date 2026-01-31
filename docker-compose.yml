@@ -4,7 +4,7 @@ services:
   # Spring Boot Application
   app:
     build:
-      context: .
+      context: ./backend
       dockerfile: Dockerfile
     container_name: saas-billing-app
     ports:
