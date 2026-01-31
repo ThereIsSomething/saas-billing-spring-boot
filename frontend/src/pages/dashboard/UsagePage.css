@@ -1,0 +1,62 @@
+.usage-page {
+    max-width: 1000px;
+}
+
+.usage-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+}
+
+.usage-card {
+    padding: var(--spacing-lg);
+}
+
+.usage-icon {
+    width: 52px;
+    height: 52px;
+    background: var(--color-primary-light);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-md);
+}
+
+.usage-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: var(--spacing-md);
+}
+
+.usage-label {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+
+.usage-value {
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+}
+
+.usage-bar {
+    height: 8px;
+    background: var(--color-bg-tertiary);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+}
+
+.usage-bar-fill {
+    height: 100%;
+    background: var(--gradient-primary);
+    border-radius: var(--radius-full);
+    transition: width var(--transition-slow);
+}
+
+@media (max-width: 640px) {
+    .usage-grid {
+        grid-template-columns: 1fr;
+    }
+}
