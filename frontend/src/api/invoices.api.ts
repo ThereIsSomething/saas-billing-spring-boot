@@ -2,8 +2,8 @@ import api from './client';
 import { Invoice } from '../types';
 
 export const invoicesApi = {
-    getMine: async (page = 0, size = 20): Promise<{ content: Invoice[]; totalPages: number }> => {
-        const response = await api.get('/invoices/my', { params: { page, size } });
+    getMine: async (): Promise<Invoice[]> => {
+        const response = await api.get<Invoice[]>('/invoices/my');
         return response.data;
     },
 

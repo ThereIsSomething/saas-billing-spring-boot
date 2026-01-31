@@ -7,18 +7,15 @@ import './InvoicesPage.css';
 const InvoicesPage: React.FC = () => {
     const [invoices, setInvoices] = useState<Invoice[]>([]);
     const [isLoading, setIsLoading] = useState(true);
-    const [page, setPage] = useState(0);
-    const [totalPages, setTotalPages] = useState(0);
 
     useEffect(() => {
         fetchInvoices();
-    }, [page]);
+    }, []);
 
     const fetchInvoices = async () => {
         try {
-            const data = await invoicesApi.getMine(page, 10);
-            setInvoices(data.content || []);
-            setTotalPages(data.totalPages || 0);
+            const data = await invoicesApi.getMine();
+            setInvoices(data || []);
         } catch (error) {
             console.error('Error fetching invoices:', error);
         } finally {
@@ -110,28 +107,6 @@ const InvoicesPage: React.FC = () => {
                             </tbody>
                         </table>
                     </div>
-
-                    {totalPages > 1 && (
-                        <div className="pagination">
-                            <button
-                                className="btn btn-secondary btn-sm"
-                                onClick={() => setPage(p => Math.max(0, p - 1))}
-                                disabled={page === 0}
-                            >
-                                Previous
-                            </button>
-                            <span className="page-info">
-                                Page {page + 1} of {totalPages}
-                            </span>
-                            <button
-                                className="btn btn-secondary btn-sm"
-                                onClick={() => setPage(p => Math.min(totalPages - 1, p + 1))}
-                                disabled={page >= totalPages - 1}
-                            >
-                                Next
-                            </button>
-                        </div>
-                    )}
                 </>
             ) : (
                 <div className="empty-state card">

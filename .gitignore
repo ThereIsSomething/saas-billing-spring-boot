@@ -140,3 +140,4 @@ failsafe-reports/
 
 # Redis dump
 dump.rdb
+.env.example
